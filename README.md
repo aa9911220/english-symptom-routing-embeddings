@@ -74,9 +74,3 @@ The dataset uses six broad routing labels.
 
 These labels are information categories, not medical diagnoses.
 
-## Dataset
-
-The custom dataset is stored in:
-
-```text
-symptom_routing_expanded_dataset.csv
