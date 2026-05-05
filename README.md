@@ -92,7 +92,7 @@ The dataset contains six balanced categories:
 Hugging Face Dataset:
 
 ```text
-TODO: add your dataset link
+ https://huggingface.co/datasets/charlie0831/english-symptom-routing
 ```
 
 ## Method
@@ -193,7 +193,7 @@ The model should only be interpreted as a broad routing tool for information ret
 A working Hugging Face Space demo is available here:
 
 ```text
-TODO: add your Hugging Face Space link
+ https://huggingface.co/spaces/charlie0831/english-symptom-routing-demo
 ```
 
 The demo lets users enter a short symptom description and returns the predicted routing category.
@@ -202,9 +202,9 @@ The demo lets users enter a short symptom description and returns the predicted 
 
 | Resource | Link |
 |---|---|
-| GitHub Repository | TODO: add your GitHub repo link |
-| Hugging Face Dataset | TODO: add your dataset link |
-| Hugging Face Demo Space | TODO: add your Space link |
+| GitHub Repository | https://github.com/aa9911220/english-symptom-routing-embeddings/tree/main |
+| Hugging Face Dataset | https://huggingface.co/datasets/charlie0831/english-symptom-routing |
+| Hugging Face Demo Space | https://huggingface.co/spaces/charlie0831/english-symptom-routing-demo |
 
 ## AI Tool Use
 
