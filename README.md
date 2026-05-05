@@ -1,18 +1,3 @@
-license: mit
-library_name: scikit-learn
-tags:
-- text-classification
-- embeddings
-- symptom-routing
-- public-health
-- information-retrieval
-- logistic-regression
-datasets:
-- TODO: your-huggingface-username/symptom-routing-dataset
-metrics:
-- accuracy
-- f1
----
 
 # English Symptom Routing Linear Probe
 
