@@ -1,0 +1,24 @@
+text,label,predicted_label
+I noticed a new rash after using a different soap.,skin,skin
+I have chest tightness and a cough.,respiratory,respiratory
+My fingers tingle and sometimes feel weak.,neurological,neurological
+I feel confused and have trouble focusing.,neurological,neurological
+I feel dizzy and tired after not sleeping well.,neurological,mental_health_sleep
+My muscles feel tight and sore after lifting boxes.,musculoskeletal,musculoskeletal
+I feel stressed and tired all the time.,mental_health_sleep,mental_health_sleep
+My nose is blocked and I keep sneezing.,respiratory,respiratory
+I vomited twice and my stomach still feels upset.,gastrointestinal,gastrointestinal
+I have a dry cough and a sore throat.,respiratory,respiratory
+My hip hurts when I walk for a long time.,musculoskeletal,musculoskeletal
+My face feels numb on one side.,neurological,neurological
+I have trouble falling asleep even when I am tired.,mental_health_sleep,mental_health_sleep
+My skin feels itchy and irritated.,skin,skin
+My cough is worse when I lie down.,respiratory,respiratory
+I feel bloated and have stomach cramps.,gastrointestinal,gastrointestinal
+I have been vomiting since this morning.,gastrointestinal,gastrointestinal
+My skin is swollen after an insect bite.,skin,skin
+I have joint pain in my fingers.,musculoskeletal,musculoskeletal
+I have nausea and stomach pain after a long car ride.,gastrointestinal,gastrointestinal
+"My hands are red, dry, and painful.",skin,skin
+My knee is painful after walking.,musculoskeletal,musculoskeletal
+I feel anxious and my sleep schedule is getting worse.,mental_health_sleep,mental_health_sleep
