@@ -1,86 +1,49 @@
 
-# English Symptom Routing Linear Probe
+```markdown
+# Symptom Description Routing for Public Health Information Retrieval
 
-## Model Description
+This project trains embedding-based classifiers to route short English symptom descriptions into broad public health information categories. It was created for an Information Retrieval assignment to test whether frozen text embeddings can support query routing before retrieval.
 
-This model is an embedding-based text classifier for routing short English symptom descriptions into broad public health information categories. It was created for an Information Retrieval assignment to test whether text embeddings can support query routing before retrieval.
-
-The model predicts one of six broad categories:
-
-- `respiratory`
-- `gastrointestinal`
-- `skin`
-- `neurological`
-- `musculoskeletal`
-- `mental_health_sleep`
-
-The model is not a medical diagnosis system. The labels are broad information-routing categories, not diseases or clinical conditions.
+The final dataset contains 90 examples. Four classifiers were trained and evaluated on the same train/test split. The best model achieved **0.957 accuracy** and **0.952 macro F1** on the held-out test set.
 
 **Important safety notice:**  
 This model is for teaching information retrieval and text classification. It does not provide medical diagnosis, treatment advice, or emergency guidance.
-
-## Intended Use
-
-This model is intended for:
-
-- teaching embedding-based text classification
-- routing short symptom descriptions toward broad public health information categories
-- demonstrating information retrieval query routing
-- comparing lightweight classifiers trained on frozen embeddings
-
-Example use case:
-
-```text
-Input: I have a dry cough and sore throat.
-Output: respiratory
-```
-
-The predicted category could be used to select relevant public health information resources, such as respiratory health guidance.
-
-## Out-of-Scope Use
-
-This model must not be used for:
-
-- medical diagnosis
-- treatment recommendation
-- medication advice
-- emergency triage
-- clinical decision-making
-- replacing professional medical review
-- making decisions about real patients
-
-If someone has severe, worsening, or urgent symptoms, they should contact a qualified medical professional or emergency service.
 
 ## Research Question
 
 Can text embeddings classify short symptom descriptions into broad health-information categories for routing users toward relevant public health resources?
 
-## Training Data
+## Domain Issue
 
-The model was trained on a custom English symptom routing dataset.
+People often describe symptoms in short, informal text. For public health information retrieval, these descriptions need to be routed to relevant information categories before retrieval. The challenge is that symptom descriptions can be brief, ambiguous, and may contain overlapping signals from multiple categories.
 
-Dataset file:
+This project uses embeddings to represent short symptom descriptions as semantic vectors, allowing lightweight classifiers to learn routing patterns from a small custom dataset.
 
-```text
-symptom_routing_expanded_dataset.csv
-```
+## Task Definition
 
-Dataset size:
+Given a short symptom description, the system predicts one broad health-information category. The predicted category can be used as a routing signal for public health information retrieval.
 
-```text
-90 examples
-```
+The system is designed to:
 
-Each row contains:
+- classify short English symptom descriptions
+- route user queries toward broad public health information categories
+- demonstrate embedding-based text classification
+- compare several classifiers trained on frozen embeddings
 
-| Column | Description |
-|---|---|
-| `text` | A short English symptom description |
-| `label` | A broad public health information category |
+The system is not designed to:
 
-The dataset contains six balanced categories:
+- diagnose diseases
+- recommend medicine
+- provide treatment advice
+- perform emergency triage
+- replace medical professionals
+- make clinical decisions
 
-| Label | Description |
+## Labels
+
+The dataset uses six broad routing labels.
+
+| Label | Meaning |
 |---|---|
 | `respiratory` | cough, sore throat, breathing problems |
 | `gastrointestinal` | stomach pain, nausea, diarrhea |
@@ -89,130 +52,246 @@ The dataset contains six balanced categories:
 | `musculoskeletal` | back pain, joint pain, muscle pain |
 | `mental_health_sleep` | anxiety, insomnia, low mood, sleep problems |
 
-Hugging Face Dataset:
+These labels are information categories, not medical diagnoses.
+
+## Dataset
+
+The custom dataset is stored in:
 
 ```text
- https://huggingface.co/datasets/charlie0831/english-symptom-routing
+symptom_routing_expanded_dataset.csv
 ```
 
-## Method
+The dataset contains 90 manually written English symptom descriptions across six balanced public health information categories.
 
-The model uses a frozen embedding model to convert symptom descriptions into vector representations. A downstream classifier was then trained on these embedding vectors.
+Each row contains:
 
-Pipeline:
+| Column | Description |
+|---|---|
+| `text` | A short English symptom description |
+| `label` | The broad public health information category |
+
+Example rows:
+
+```csv
+text,label
+"I have a dry cough and sore throat, and I feel feverish.",respiratory
+"My stomach hurts after eating and I feel nauseous.",gastrointestinal
+"I have an itchy red rash on my arms.",skin
+"I feel dizzy and have a strong headache.",neurological
+"My lower back hurts when I bend or lift things.",musculoskeletal
+"I cannot sleep and I feel anxious most nights.",mental_health_sleep
+```
+
+## Data Split
+
+The dataset was split into training and test sets using stratified sampling.
+
+| Split | Rows |
+|---|---:|
+| Training set | 67 |
+| Test set | 23 |
+| Total | 90 |
+
+Split settings:
 
 ```text
-symptom text -> embedding model -> embedding vector -> classifier -> predicted category
+Test size: 0.25
+Random seed: 712
+Stratified by label
 ```
 
-Embedding model:
+## Embedding Model
+
+The project uses the following embedding model:
 
 ```text
 nicher92/saga-embed_v1
 ```
 
-Classifier:
+The embedding model converts each symptom description into a dense vector representation.
+
+The embedding model was used as a frozen text encoder. Only the downstream classifiers were trained for this assignment.
+
+## Classifiers
+
+Four classifiers were trained on the same embedding vectors:
+
+- Logistic Regression
+- Linear SVM
+- KNN with cosine distance
+- Random Forest
+
+Pipeline:
 
 ```text
-Regularized Logistic Regression
+symptom description -> frozen embedding model -> embedding vector -> classifier -> predicted category
 ```
 
-The embedding model was used as a frozen text encoder. Only the downstream classifier was trained for this assignment.
+The best classifier was Logistic Regression, which was saved as:
 
-## Model Files
-
-This repository contains:
-
-| File | Description |
-|---|---|
-| `model_phase2.joblib` | Trained logistic regression classifier |
-| `metrics.json` | Evaluation metrics |
-| `predictions_phase2.csv` | Test set predictions |
-| `README.md` | Model card |
+```text
+model_phase2.joblib
+```
 
 ## Evaluation
 
-The model was evaluated on a held-out test set.
+The classifiers were evaluated on the held-out test set.
 
-Data split:
-
-```text
-Test size: 0.25
-Random seed: 712
-```
-
-Results:
-
-| Metric | Score |
-|---|---:|
-| Accuracy | 0.957 |
-| Macro F1 | 0.952 |
-
-Macro F1 is important because it measures whether the classifier performs consistently across all categories, rather than only performing well on the most common category.
-
-Detailed evaluation results are available in:
+Evaluation results are stored in:
 
 ```text
 metrics.json
 predictions_phase2.csv
 ```
 
-## Example Predictions
+## Classifier Comparison
 
-Example 1:
+| Classifier | Accuracy | Macro F1 | Weighted F1 |
+|---|---:|---:|---:|
+| Logistic Regression | 0.957 | 0.952 | 0.957 |
+| Linear SVM | 0.957 | 0.952 | 0.957 |
+| KNN cosine | 0.783 | 0.763 | 0.764 |
+| Random Forest | 0.913 | 0.903 | 0.909 |
+
+Logistic Regression and Linear SVM achieved the same top score. Logistic Regression was selected for the demo because it provides probability scores through `predict_proba`, which makes the demo output more informative.
+
+Macro F1 is especially important because it measures whether the classifier performs consistently across all categories, not only on the most common label.
+
+## Example Prediction
+
+Input:
 
 ```text
-Input: I have a fever, dry cough, and sore throat.
-Predicted category: respiratory
+I have a fever, dry cough, and sore throat.
 ```
 
-Example 2:
+Output:
 
 ```text
-Input: My stomach hurts after eating and I feel nauseous.
-Predicted category: gastrointestinal
+Predicted information category: respiratory
 ```
 
-Example 3:
+Suggested retrieval focus:
 
 ```text
-Input: I cannot sleep and I feel anxious most nights.
-Predicted category: mental_health_sleep
+cough, fever, sore throat public health guidance
 ```
 
-## Limitations
+## Error Analysis
 
-This model was trained on a small educational dataset with 90 manually created examples. It may not generalize well to real-world symptom descriptions, different writing styles, misspellings, slang, or complex multi-symptom cases.
+Some errors are expected because short symptom descriptions can contain signals from more than one category.
 
-Some symptom descriptions can reasonably belong to more than one category. For example, a sentence mentioning both dizziness and sleep problems may be difficult to classify because it contains signals for both `neurological` and `mental_health_sleep`.
+Example:
 
-The model should only be interpreted as a broad routing tool for information retrieval experiments. It should not be interpreted as a clinical or diagnostic system.
+```text
+I feel tired, dizzy, and cannot sleep.
+```
 
-## Demo
+This could be difficult because `dizzy` may suggest the `neurological` category, while `cannot sleep` may suggest the `mental_health_sleep` category.
+
+These overlapping cases show why the model should be used only for broad information routing, not for diagnosis or medical decision-making.
+
+## Hugging Face Demo
 
 A working Hugging Face Space demo is available here:
 
 ```text
- https://huggingface.co/spaces/charlie0831/english-symptom-routing-demo
+TODO: add your Hugging Face Space link
 ```
 
-The demo lets users enter a short symptom description and returns the predicted routing category.
+The demo allows users to enter a short symptom description and returns:
 
-## Repository Links
+- predicted category
+- suggested retrieval focus
+- category probability scores
+- a safety notice
+
+## Links
 
 | Resource | Link |
 |---|---|
-| GitHub Repository | https://github.com/aa9911220/english-symptom-routing-embeddings/tree/main |
 | Hugging Face Dataset | https://huggingface.co/datasets/charlie0831/english-symptom-routing |
-| Hugging Face Demo Space | https://huggingface.co/spaces/charlie0831/english-symptom-routing-demo |
+| Hugging Face Model | https://huggingface.co/charlie0831/symptom-routing-embedding-classifiers |
+| Hugging Face Space Demo | https://huggingface.co/spaces/charlie0831/symptom-routing-embedding-demo |
+| GitHub Repository | TODO |
 
-## AI Tool Use
+## Repository Files
 
-AI coding tools were used to support coding, documentation, dataset formatting, and report drafting. The outputs were manually checked and edited, especially the medical safety statements, label definitions, evaluation results, and limitations.
+| File | Description |
+|---|---|
+| `app.py` | Gradio web demo for predicting routing categories. |
+| `preprocess.py` | Reproducible training and evaluation script. |
+| `requirements.txt` | Python dependencies needed to run the project. |
+| `symptom_routing_expanded_dataset.csv` | Custom symptom routing dataset with 90 examples. |
+| `train.csv` | Training split generated from the custom dataset. |
+| `test.csv` | Test split generated from the custom dataset. |
+| `model_phase2.joblib` | Best trained classifier used by the demo. |
+| `all_classifiers_phase2.joblib` | All trained classifiers from the comparison experiment. |
+| `metrics.json` | Evaluation metrics for all classifiers. |
+| `predictions_phase2.csv` | Test set predictions from the selected model. |
+| `report.md` | Short academic report for the assignment. |
 
-Using AI tools helped speed up implementation, but the project still required manual understanding of the data, embedding pipeline, classifier training, and evaluation results.
+## How to Run Locally
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Reproduce training and evaluation:
+
+```bash
+python preprocess.py
+```
+
+Run the Gradio app:
+
+```bash
+python app.py
+```
+
+Then open the local URL shown in the terminal.
+
+## Intended Use
+
+This project is intended for:
+
+- information retrieval education
+- text classification experiments
+- embedding-based classifier demonstrations
+- public health information routing prototypes
+
+## Out-of-Scope Use
+
+This project must not be used for:
+
+- medical diagnosis
+- treatment recommendation
+- medication advice
+- emergency guidance
+- clinical triage
+- real patient decision-making
+
+If someone has severe, worsening, or urgent symptoms, they should contact a qualified medical professional or emergency service.
+
+## Limitations
+
+The dataset is small and created for an educational assignment. It does not represent the full variety of real-world symptom descriptions. The model may make mistakes, especially when a text contains symptoms from multiple categories.
+
+The labels are broad information categories and should not be interpreted as diseases or clinical conditions.
+
+The classifier depends on the quality of the embeddings and the training examples. More data, more diverse writing styles, and further evaluation would be needed before considering any real-world use.
+
+## AI Tool Reflection
+
+AI coding tools were used to support coding, documentation, dataset formatting, training script development, model card writing, and report drafting. The outputs were manually checked and edited, especially the safety statements, label definitions, evaluation results, and project limitations.
+
+Using AI tools made it faster to build the project structure and write code, but it was still necessary to understand each part of the pipeline. In particular, I checked that the system was framed as information routing rather than diagnosis, and that the embedding model was used only as a frozen encoder while the downstream classifiers were trained for the assignment.
 
 ## License
 
-This model is released under the MIT License.
+This project is released under the MIT License.
+
 
