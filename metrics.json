@@ -1,0 +1,482 @@
+{
+  "dataset": "symptom_routing_expanded_dataset.csv",
+  "rows": 90,
+  "train_rows": 67,
+  "test_rows": 23,
+  "test_size": 0.25,
+  "random_seed": 712,
+  "embedding_model": "nicher92/saga-embed_v1",
+  "embedding_usage": "Frozen text encoder; only downstream classifiers were trained.",
+  "best_classifier": "logistic_regression",
+  "best_metrics": {
+    "accuracy": 0.9565217391304348,
+    "macro_f1": 0.9523809523809524,
+    "weighted_f1": 0.9565217391304348
+  },
+  "classifier_results": {
+    "logistic_regression": {
+      "accuracy": 0.9565217391304348,
+      "macro_f1": 0.9523809523809524,
+      "weighted_f1": 0.9565217391304348,
+      "classification_report": {
+        "gastrointestinal": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 4.0
+        },
+        "mental_health_sleep": {
+          "precision": 0.75,
+          "recall": 1.0,
+          "f1-score": 0.8571428571428571,
+          "support": 3.0
+        },
+        "musculoskeletal": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 4.0
+        },
+        "neurological": {
+          "precision": 1.0,
+          "recall": 0.75,
+          "f1-score": 0.8571428571428571,
+          "support": 4.0
+        },
+        "respiratory": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 4.0
+        },
+        "skin": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 4.0
+        },
+        "accuracy": 0.9565217391304348,
+        "macro avg": {
+          "precision": 0.9583333333333334,
+          "recall": 0.9583333333333334,
+          "f1-score": 0.9523809523809524,
+          "support": 23.0
+        },
+        "weighted avg": {
+          "precision": 0.967391304347826,
+          "recall": 0.9565217391304348,
+          "f1-score": 0.9565217391304348,
+          "support": 23.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          4,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          4
+        ]
+      ],
+      "labels": [
+        "gastrointestinal",
+        "mental_health_sleep",
+        "musculoskeletal",
+        "neurological",
+        "respiratory",
+        "skin"
+      ]
+    },
+    "linear_svm": {
+      "accuracy": 0.9565217391304348,
+      "macro_f1": 0.9523809523809524,
+      "weighted_f1": 0.9565217391304348,
+      "classification_report": {
+        "gastrointestinal": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 4.0
+        },
+        "mental_health_sleep": {
+          "precision": 0.75,
+          "recall": 1.0,
+          "f1-score": 0.8571428571428571,
+          "support": 3.0
+        },
+        "musculoskeletal": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 4.0
+        },
+        "neurological": {
+          "precision": 1.0,
+          "recall": 0.75,
+          "f1-score": 0.8571428571428571,
+          "support": 4.0
+        },
+        "respiratory": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 4.0
+        },
+        "skin": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 4.0
+        },
+        "accuracy": 0.9565217391304348,
+        "macro avg": {
+          "precision": 0.9583333333333334,
+          "recall": 0.9583333333333334,
+          "f1-score": 0.9523809523809524,
+          "support": 23.0
+        },
+        "weighted avg": {
+          "precision": 0.967391304347826,
+          "recall": 0.9565217391304348,
+          "f1-score": 0.9565217391304348,
+          "support": 23.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          4,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          4
+        ]
+      ],
+      "labels": [
+        "gastrointestinal",
+        "mental_health_sleep",
+        "musculoskeletal",
+        "neurological",
+        "respiratory",
+        "skin"
+      ]
+    },
+    "knn_cosine": {
+      "accuracy": 0.782608695652174,
+      "macro_f1": 0.7632275132275131,
+      "weighted_f1": 0.7638026224982746,
+      "classification_report": {
+        "gastrointestinal": {
+          "precision": 1.0,
+          "recall": 0.75,
+          "f1-score": 0.8571428571428571,
+          "support": 4.0
+        },
+        "mental_health_sleep": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "f1-score": 0.75,
+          "support": 3.0
+        },
+        "musculoskeletal": {
+          "precision": 0.75,
+          "recall": 0.75,
+          "f1-score": 0.75,
+          "support": 4.0
+        },
+        "neurological": {
+          "precision": 0.5,
+          "recall": 0.25,
+          "f1-score": 0.3333333333333333,
+          "support": 4.0
+        },
+        "respiratory": {
+          "precision": 0.8,
+          "recall": 1.0,
+          "f1-score": 0.8888888888888888,
+          "support": 4.0
+        },
+        "skin": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 4.0
+        },
+        "accuracy": 0.782608695652174,
+        "macro avg": {
+          "precision": 0.775,
+          "recall": 0.7916666666666666,
+          "f1-score": 0.7632275132275131,
+          "support": 23.0
+        },
+        "weighted avg": {
+          "precision": 0.782608695652174,
+          "recall": 0.782608695652174,
+          "f1-score": 0.7638026224982746,
+          "support": 23.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          3,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          3,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          3,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          4
+        ]
+      ],
+      "labels": [
+        "gastrointestinal",
+        "mental_health_sleep",
+        "musculoskeletal",
+        "neurological",
+        "respiratory",
+        "skin"
+      ]
+    },
+    "random_forest": {
+      "accuracy": 0.9130434782608695,
+      "macro_f1": 0.9027777777777777,
+      "weighted_f1": 0.9094202898550724,
+      "classification_report": {
+        "gastrointestinal": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 4.0
+        },
+        "mental_health_sleep": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "f1-score": 0.75,
+          "support": 3.0
+        },
+        "musculoskeletal": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 4.0
+        },
+        "neurological": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1-score": 0.6666666666666666,
+          "support": 4.0
+        },
+        "respiratory": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 4.0
+        },
+        "skin": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 4.0
+        },
+        "accuracy": 0.9130434782608695,
+        "macro avg": {
+          "precision": 0.9333333333333332,
+          "recall": 0.9166666666666666,
+          "f1-score": 0.9027777777777777,
+          "support": 23.0
+        },
+        "weighted avg": {
+          "precision": 0.9478260869565218,
+          "recall": 0.9130434782608695,
+          "f1-score": 0.9094202898550724,
+          "support": 23.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          4,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          4
+        ]
+      ],
+      "labels": [
+        "gastrointestinal",
+        "mental_health_sleep",
+        "musculoskeletal",
+        "neurological",
+        "respiratory",
+        "skin"
+      ]
+    }
+  },
+  "label_distribution": {
+    "gastrointestinal": 15,
+    "mental_health_sleep": 15,
+    "musculoskeletal": 15,
+    "neurological": 15,
+    "respiratory": 15,
+    "skin": 15
+  }
+}

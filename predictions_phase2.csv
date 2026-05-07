@@ -1,0 +1,24 @@
+text,label,predicted_label,classifier
+I noticed a new rash after using a different soap.,skin,skin,logistic_regression
+I have chest tightness and a cough.,respiratory,respiratory,logistic_regression
+My fingers tingle and sometimes feel weak.,neurological,neurological,logistic_regression
+I feel confused and have trouble focusing.,neurological,neurological,logistic_regression
+I feel dizzy and tired after not sleeping well.,neurological,mental_health_sleep,logistic_regression
+My muscles feel tight and sore after lifting boxes.,musculoskeletal,musculoskeletal,logistic_regression
+I feel stressed and tired all the time.,mental_health_sleep,mental_health_sleep,logistic_regression
+My nose is blocked and I keep sneezing.,respiratory,respiratory,logistic_regression
+I vomited twice and my stomach still feels upset.,gastrointestinal,gastrointestinal,logistic_regression
+I have a dry cough and a sore throat.,respiratory,respiratory,logistic_regression
+My hip hurts when I walk for a long time.,musculoskeletal,musculoskeletal,logistic_regression
+My face feels numb on one side.,neurological,neurological,logistic_regression
+I have trouble falling asleep even when I am tired.,mental_health_sleep,mental_health_sleep,logistic_regression
+My skin feels itchy and irritated.,skin,skin,logistic_regression
+My cough is worse when I lie down.,respiratory,respiratory,logistic_regression
+I feel bloated and have stomach cramps.,gastrointestinal,gastrointestinal,logistic_regression
+I have been vomiting since this morning.,gastrointestinal,gastrointestinal,logistic_regression
+My skin is swollen after an insect bite.,skin,skin,logistic_regression
+I have joint pain in my fingers.,musculoskeletal,musculoskeletal,logistic_regression
+I have nausea and stomach pain after a long car ride.,gastrointestinal,gastrointestinal,logistic_regression
+"My hands are red, dry, and painful.",skin,skin,logistic_regression
+My knee is painful after walking.,musculoskeletal,musculoskeletal,logistic_regression
+I feel anxious and my sleep schedule is getting worse.,mental_health_sleep,mental_health_sleep,logistic_regression
