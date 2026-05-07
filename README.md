@@ -197,7 +197,7 @@ These overlapping cases show why the model should be used only for broad informa
 A working Hugging Face Space demo is available here:
 
 ```text
-TODO: add your Hugging Face Space link
+https://huggingface.co/spaces/charlie0831/symptom-routing-embedding-demo
 ```
 
 The demo allows users to enter a short symptom description and returns:
@@ -214,7 +214,7 @@ The demo allows users to enter a short symptom description and returns:
 | Hugging Face Dataset | https://huggingface.co/datasets/charlie0831/english-symptom-routing |
 | Hugging Face Model | https://huggingface.co/charlie0831/symptom-routing-embedding-classifiers |
 | Hugging Face Space Demo | https://huggingface.co/spaces/charlie0831/symptom-routing-embedding-demo |
-| GitHub Repository | TODO |
+| GitHub Repository | https://github.com/aa9911220/english-symptom-routing-embeddings/tree/main |
 
 ## Repository Files
 
